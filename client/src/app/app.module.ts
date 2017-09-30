@@ -9,12 +9,16 @@ import { CadastroModalComponent } from './cadastro-modal/cadastro-modal.componen
 
 import { ModalModule } from 'ngx-bootstrap';
 import { ResultTableComponent } from './result-table/result-table.component';
+import { DeletarModalComponent } from './deletar-modal/deletar-modal.component';
+import { UpdateModalComponent } from './update-modal/update-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CadastroModalComponent,
-    ResultTableComponent
+    ResultTableComponent,
+    DeletarModalComponent,
+    UpdateModalComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +26,7 @@ import { ResultTableComponent } from './result-table/result-table.component';
     ReactiveFormsModule,
     HttpModule,
     ModalModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]
