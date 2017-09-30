@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+.teste{
+    margin: 10px;
+}
+.menubar{
+    display: inline !important;
+}
+.bg-menubar{
+    background-color: Gainsboro !important;
+}
+.table{
+    margin: 0 auto;
+}

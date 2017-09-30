@@ -1,0 +1,1 @@
+create table animal(id_animal serial, nome varchar(50), especie varchar(100), raca varchar(100))
