@@ -30,7 +30,6 @@ app.post('/app/animal', (req, res) => {
     const name = req.body.nome;
     const especie = req.body.especie;
     const breed = req.body.raca;
-    console.log(name);
     const client = getClient();
     client.connect();
     client.query("INSERT INTO animal(nome, especie, raca) VALUES ($1, $2, $3)", [name, especie, breed], (err, item) => {

@@ -4,43 +4,47 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import {NgModule} from '@angular/core';
 import { Http } from '@angular//http';
 import {
-  FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators
+    FormGroup,
+    FormControl,
+    FormBuilder,
+    Validators
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-cadastro-modal',
-  templateUrl: './cadastro-modal.component.html',
-  styleUrls: ['./cadastro-modal.component.css']
+    selector: 'app-cadastro-modal',
+    templateUrl: './cadastro-modal.component.html',
+    styleUrls: ['./cadastro-modal.component.css']
 })
 export class CadastroModalComponent implements OnInit {
+
     public modalRef: BsModalRef;
-    formulario : FormGroup;
-      constructor(
-          private modalService: BsModalService,
-          private formBuilder :FormBuilder,
-          private http: Http
-      ) {}
+    public formulario : FormGroup;
 
-      public openModal(template: TemplateRef<any>) {
+    constructor(
+        private modalService: BsModalService,
+        private formBuilder :FormBuilder,
+        private http: Http
+    ) {}
+
+    public openModal(template: TemplateRef<any>) {
         this.modalRef = this.modalService.show(template);
-      }
+    }
 
-      ngOnInit(){
-          this.formulario = this.formBuilder.group({
-          nome: [null],
-          raca: [null],
-          especie: [null]
-          })
-      }
+    ngOnInit(){
+        this.formulario = this.formBuilder.group({
+            nome: [null],
+            raca: [null],
+            especie: [null]
+        })
+    }
 
-      onSubmit(){
-          const body = this.formulario.value
+    onSubmit(){
+        const body = this.formulario.value
 
-          this.http
-            .post('http://localhost:3000/app/animal', body)
-            .subscribe()
-      }
+        this.http
+        .post('http://localhost:3000/app/animal', body)
+        .subscribe();
+
+        this.modalRef.hide();
+    }
 }
