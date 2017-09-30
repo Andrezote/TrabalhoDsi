@@ -5,7 +5,7 @@
     margin: 10px;
 }
 .menubar{
-    display: inline !important;
+    display: inline-block !important;
 }
 .bg-menubar{
     background-color: Gainsboro !important;
