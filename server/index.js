@@ -11,7 +11,7 @@ function getClient() {
       port: 5432,
       database: 'cadanimal',
       user:'postgres',
-      password: 'admin',
+      password: '123456',
     });
 }
 
@@ -30,7 +30,6 @@ app.post('/app/animal', (req, res) => {
     const name = req.body.nome;
     const especie = req.body.especie;
     const breed = req.body.raca;
-    console.log(name);
     const client = getClient();
     client.connect();
     client.query("INSERT INTO animal(nome, especie, raca) VALUES ($1, $2, $3)", [name, especie, breed], (err, item) => {
@@ -61,6 +60,44 @@ app.get('/app/animal', (req, res) => {
         client.end();
     })
 })
+
+app.post('/app/animalDel', (req, res) => {
+    const client = getClient();
+    const id = req.body.id_animal;
+
+    client.connect()
+
+    client.query("DELETE FROM animal WHERE id_animal = $1",[id], (err, result) => {
+        if (err){
+            res.jason(err)
+            return next(err)
+        } else {
+            res.status(200).json(result.rows)
+        }
+        client.end();
+    })
+})
+
+app.post('/app/animalUpdate', (req, res) => {
+    const client = getClient();
+    const id = req.body.id;
+    const name = req.body.nome;
+    const especie = req.body.especie;
+    const breed = req.body.raca;
+
+    client.connect()
+
+    client.query("UPDATE animal SET nome = $1, especie = $2, raca = $3 WHERE id_animal = $4",[name,especie, breed,id], (err, result) => {
+        if (err){
+            res.jason(err)
+            return next(err)
+        } else {
+            res.status(200).json("deletado")
+        }
+        client.end();
+    })
+})
+
 
 app.listen(3000, function(){
     console.log('Servidor iniciado.');

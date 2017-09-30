@@ -1,0 +1,29 @@
+<div class="bg-menubar">
+    <button type="button" class="btn btn-link" (click)="openModal(template)">Atualizar Cadastro de Animais</button>
+</div>
+
+<template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Atualizar Cadastro de Animais</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form class="container-fluid" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <input type="text" class="form-control" formControlName="id" placeholder="Id">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" formControlName="nome" placeholder="Apelido">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" formControlName="raca" placeholder="Raça">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" formControlName="especie" placeholder="Especie">
+          </div>
+            <button type="submit" class="btn btn-primary" onclick="">Atualizar Dados</button>
+      </form>
+  </div>
+</template>
